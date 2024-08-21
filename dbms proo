@@ -1,0 +1,92 @@
+CREATE TABLE s(
+    sno char(3) PRIMARY KEY,
+    sname varchar(50),
+    s_status int,
+    s_city varchar(25)
+    );
+    
+CREATE TABLE p(
+	pno char(3) PRIMARY KEY,
+    pname varchar(20),
+    color varchar(10),
+    weight float(5.2),
+    p_city varchar(25)
+	);
+    
+CREATE TABLE sp(
+	sno char(3),
+    pno char(3),
+    qty int,
+   
+    PRIMARY KEY (sno,pno)
+	);
+
+
+INSERT INTO s VALUES('s1','smith', 20, 'london');
+INSERT INTO s VALUES('s2','jones', 10, 'paris');
+INSERT INTO s VALUES('s3','black', 30, 'paris');
+INSERT INTO s VALUES('s4','clark', 20, 'london');
+INSERT INTO s VALUES('s5','adams', 30, 'india');
+
+INSERT INTO p VALUES('p1','nut','red',12, 'london');
+INSERT INTO p VALUES('p2','bolt', 'green', 17, 'paris');
+INSERT INTO p VALUES('p3','screw', 'blue',14, 'uk');
+INSERT INTO p VALUES('p4','screw', 'red',14, 'london');
+INSERT INTO p VALUES('p5','cam', 'blue',12, 'paris');
+INSERT INTO p VALUES('p6','cam', 'red', 19,'london');
+
+INSERT INTO sp VALUES ('s1', 'p1', 300);
+INSERT INTO sp VALUES ('s1', 'p2', 400);
+INSERT INTO sp VALUES ('s1', 'p3', 100);
+INSERT INTO sp VALUES ('s1', 'p4', 200);
+INSERT INTO sp VALUES ('s1', 'p5', 100);
+INSERT INTO sp VALUES ('s1', 'p6', 600);
+INSERT INTO sp VALUES ('s2', 'p1', 700);
+INSERT INTO sp VALUES ('s2', 'p2', 200);
+INSERT INTO sp VALUES ('s3', 'p2', 300);
+INSERT INTO sp VALUES ('s4', 'p2', 300);
+INSERT INTO sp VALUES ('s4', 'p4', 700);
+INSERT INTO sp VALUES ('s4', 'p5', 800);
+
+
+
+
+
+
+
+
+
+    2(5)              SELECT weight FROM p WHERE weight=(SELECT MAX(weight)FROM p WHERE weight <(SELECT MAX(weight) FROM p ));     
+ 2(3)                     SELECT Pname ,pno,color FROM p WHERE color='red';
+
+        2(2)                        SELECT pno,pname,weight FROM p where weight=(select max(weight) from p);
+
+       2(1)                         SELECT * FROM p WHERE p_city='London';
+         2(4)                              SELECT DISTINCT s.sname,s.s_city FROM s,sp WHERE s.sno=sp.sno and sp.qty>200;
+
+
+
+
+
+
+
+
+
+CREATE TABLE dept
+(
+    dept_id int PRIMARY KEY,
+    dept_name varchar(30) ,
+    dept_location varchar(30)
+    );
+      
+
+
+CREATE TABLE emp
+(
+    emp_id int PRIMARY KEY,
+    emp_name varchar(30),
+    emp_dep_id int,
+    emp_boss_id int,
+    emp_salary int
+    );
+
